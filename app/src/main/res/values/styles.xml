@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="FloatingActionButton" parent="@style/Widget.Design.FloatingActionButton">
+        <!-- Customize your theme here. -->
+        <item name="android:background">@drawable/design_fab_background</item>
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="fabSize">auto</item>
+        <item name="elevation">@dimen/design_fab_elevation</item>
+        <item name="pressedTranslationZ">@dimen/design_fab_translation_z_pressed</item>
+        <item name="rippleColor">?attr/colorControlHighlight</item>
+        <item name="borderWidth">@dimen/design_fab_border_width</item>
+    </style>
+
+</resources>
