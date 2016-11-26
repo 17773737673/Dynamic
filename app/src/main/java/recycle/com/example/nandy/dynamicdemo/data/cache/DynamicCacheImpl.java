@@ -1,7 +1,6 @@
 package recycle.com.example.nandy.dynamicdemo.data.cache;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -11,7 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import recycle.com.example.nandy.dynamicdemo.data.executor.ThreadExecutor;
-import recycle.com.example.nandy.dynamicdemo.data.json.DynamicEntityJsonMapper;
+import recycle.com.example.nandy.dynamicdemo.data.mapper.DynamicEntityJsonMapper;
 import rx.Observable;
 import rx.Subscriber;
 

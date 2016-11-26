@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<recycle.com.example.nandy.dynamicdemo.widget.SwipeToLoadLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeToLoadLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    swipe:swipe_style="classic"
     tools:showIn="@layout/activity_main">
 
-    <recycle.com.example.nandy.dynamicdemo.widget.recycleview.IRecyclerView
-        android:id="@+id/recycle"
+    <include
+        android:id="@id/swipe_refresh_header"
+        layout="@layout/layout_twitter_header" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/swipe_target"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:loadMoreEnabled="true"
-        app:refreshEnabled="true"
-        app:refreshHeaderLayout="@layout/layout_irecyclerview_refresh_header" />
-</FrameLayout>
+        android:clipToPadding="false" />
+
+    <include
+        android:id="@id/swipe_load_more_footer"
+        layout="@layout/layout_classic_footer" />
+</recycle.com.example.nandy.dynamicdemo.widget.SwipeToLoadLayout>

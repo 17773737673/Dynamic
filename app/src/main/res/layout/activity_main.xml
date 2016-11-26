@@ -1,68 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="true"
-    android:fitsSystemWindows="true">
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    >
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
+    <data>
+        <variable
+            name="present"
+            type="recycle.com.example.nandy.dynamicdemo.moudle.main.MainPresenter" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="256dp"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="256dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="@dimen/title_margin"
-            app:expandedTitleMarginStart="@dimen/title_margin"
-            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-            <!--app:expandedTitleGravity="bottom"-->
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <ImageView
-                android:id="@+id/news_detail_photo_iv"
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.7"
-                tools:targetApi="lollipop" />
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginEnd="@dimen/title_margin"
+                app:expandedTitleMarginStart="@dimen/title_margin"
+                app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                <!--app:expandedTitleGravity="bottom"-->
+
+                <ImageView
+                    android:id="@+id/news_detail_photo_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg"
+                    android:fitsSystemWindows="true"
+                    android:onClick="@{present.onClick}"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7"
+                    tools:targetApi="lollipop" />
 
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:title="@string/app_name" />
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:scaleType="centerCrop"
+            android:src="@drawable/contact"
+            app:backgroundTint="@android:color/transparent"
+            app:elevation="0dp"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|end"
+            app:pressedTranslationZ="0dp" />
+
+        <recycle.com.example.nandy.dynamicdemo.widget.SwipeToLoadLayout
+
+            android:id="@+id/swipeToLoadLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            swipe:swipe_style="classic"
+            tools:showIn="@layout/activity_main">
+
+            <include
+                android:id="@id/swipe_refresh_header"
+                layout="@layout/layout_twitter_header" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/swipe_target"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="@string/app_name" />
+                android:layout_height="match_parent"
+                android:clipToPadding="false" />
 
-        </android.support.design.widget.CollapsingToolbarLayout>
+            <include
+                android:id="@id/swipe_load_more_footer"
+                layout="@layout/layout_classic_footer" />
+        </recycle.com.example.nandy.dynamicdemo.widget.SwipeToLoadLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:scaleType="centerCrop"
-        android:src="@drawable/contact"
-        app:backgroundTint="@android:color/transparent"
-        app:elevation="0dp"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        app:pressedTranslationZ="0dp" />
-
-    <include layout="@layout/recycle_view" />
-</android.support.design.widget.CoordinatorLayout>
+</layout>

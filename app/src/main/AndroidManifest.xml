@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="recycle.com.example.nandy.dynamicdemo">
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-sdk tools:overrideLibrary="com.example.ijkplayer_x86_64,
+     tv.danmaku.ijk.media.player_arm64"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -16,11 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
-        -->
-
         <activity android:name=".moudle.create.DynamicCreateActivity" />
         <activity android:name=".moudle.detail.DynamicDetailActivity"></activity>
     </application>

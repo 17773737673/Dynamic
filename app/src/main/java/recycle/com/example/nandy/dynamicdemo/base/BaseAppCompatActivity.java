@@ -16,7 +16,9 @@ import recycle.com.example.nandy.dynamicdemo.utils.StatusBarCompat;
 /**
  * Created by nandy on 16/11/10.
  */
-public class BaseAppCompatActivity extends AppCompatActivity {
+public class BaseAppCompatActivity extends AppCompatActivity implements BaseView {
+
+    private BasePresenter mBasePresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +28,10 @@ public class BaseAppCompatActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
+
+    public void initPresenter(BasePresenter basePresenter) {
+        mBasePresenter = basePresenter;
+    }
 
     @Override
     protected void onDestroy() {
@@ -40,6 +46,8 @@ public class BaseAppCompatActivity extends AppCompatActivity {
         return new ActivityModule(this);
     }
 
+
+    @Override
     public Context getContext() {
         return this;
     }

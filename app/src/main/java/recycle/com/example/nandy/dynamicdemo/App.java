@@ -21,6 +21,7 @@ public class App extends Application {
     Navigator navigator;
 
     private static App app;
+    public long uid;
 
     @Override
     public void onCreate() {
